@@ -10,10 +10,7 @@ use App\Models\Film;
 use App\Repositories\Util\LogRepository as LogRepo;
 
 class FilmController extends Controller
-{
-    public function __construct() {
-        //$this->middleware('jwt.auth');
-    }
+{    
     
 	public function get(Request $request, $id){
 		try{
@@ -22,7 +19,7 @@ class FilmController extends Controller
 				$film = Film::with(
 					[
 						'comments'=> function ($query) {
-							$query->select('film','content','post_date');
+							$query->join('users','users.id', '=', 'comments.user')->select('film','content','post_date','users.full_name');
 						},
 						'genres'
 					]
@@ -34,7 +31,7 @@ class FilmController extends Controller
 				$film = Film::with(
 					[
 						'comments'=> function ($query) {
-							$query->select('content','post_date');
+							$query->join('users','users.id', '=', 'comments.user')->select('film','content','post_date','users.full_name');
 						},
 						'genres'
 					]

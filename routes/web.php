@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('film.list');
 });
 
+Route::get('/films/{filmId}', 'Frontend\FilmController@get')->where('filmId', '[a-zA-Z0-9\-]+');
+
 Route::get('/login', function () {
    return view('user.login');
 });
