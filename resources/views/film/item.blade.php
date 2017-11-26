@@ -15,6 +15,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-10">
+						<div class="response-message"></div>
                        <div class="card">                            
                             <div class="content">
                                 <div id="film" data-film="<?php echo $film;?>">                                    
@@ -31,6 +32,7 @@
     </div>
 @section('scripts')
 	<script src="{{asset('public/js/custom/config.js')}}"></script>
+	<script src="{{asset('public/js/custom/functions.js')}}"></script>
 	<script src="{{asset('public/js/custom/film/item.js')}}"></script>
 @stop
 
