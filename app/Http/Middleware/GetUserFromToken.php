@@ -9,7 +9,7 @@ use Tymon\JWTAuth\Middleware\BaseMiddleware;
 class GetUserFromToken extends BaseMiddleware
 {
     
-    const SESSION_TOKEN = 'token';    
+    const HEADER_TOKEN = 'x-access-token';
 
     /**
      * Handle an incoming request.
@@ -20,14 +20,14 @@ class GetUserFromToken extends BaseMiddleware
      */
     public function handle($request, \Closure $next, $force_success = 0)
     {        
-        $token = $request->session()->get(self::SESSION_TOKEN);
-		//var_dump($token);die();
+        $token = $request->header(self::HEADER_TOKEN);
         //$request_client_id = $request->header(self::CLIENT_ID);
         
         if (! $token ) {
             if(!$force_success){
-                $result = array("code" => 4000, "description" => "token not provided");
+                $result = array("code" => 400, "description" => "token not provided");
                echo json_encode($result, JSON_UNESCAPED_SLASHES);
+			   http_response_code(400);
                die();   
             }
             $request->request->add(['user_id' => null]);
@@ -39,11 +39,13 @@ class GetUserFromToken extends BaseMiddleware
         try {
             $user = $this->auth->authenticate($token);
         } catch (TokenExpiredException $e) {
-			$result = array("code" => 4003 , "description" => "token expired");
+			$result = array("code" => 403 , "description" => "token expired");
+			http_response_code(403);
             echo json_encode($result, JSON_UNESCAPED_SLASHES);
             die();
         } catch (JWTException $e) {
-           $result = array("code" => 4000, "description" => "token invalid");
+           $result = array("code" => 400, "description" => "token invalid");
+		   http_response_code(400);
             echo json_encode($result, JSON_UNESCAPED_SLASHES);
             die();
         }
