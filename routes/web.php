@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('film.list');
+    return redirect('/films/');
 });
 
 Route::get('/films/{filmId}', 'Frontend\FilmController@get')->where('filmId', '[a-zA-Z0-9\-]+');
