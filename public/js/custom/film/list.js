@@ -45,7 +45,7 @@
 						html += '<td>'+result[i].ticket_price+'</td>';
 						html += '<td>'+result[i].release_date+'</td>';
 						html += '<td>'+result[i].rating+'</td>';
-						html += '<td><img src="'+base_url+'/public/uploads/'+result[i].photo+'" width="50" height="50"></td>';
+						html += '<td><img src="'+base_url+'/public/'+result[i].photo+'" width="50" height="50"></td>';
 						html += '</tr>';                                        	
 					}
 				}

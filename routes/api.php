@@ -33,3 +33,9 @@ Route::post('/films/{filmId}/comments', 'Films\Film\CommentsController@post')->w
 
 //get all comments of a film
 Route::get('/films/{filmId}/comments', 'Films\Film\CommentsController@get')->where('filmId', '[a-zA-Z0-9\-]+');
+
+//Get all film genres
+Route::get('/genres','GenresController@get');
+
+// file upload
+Route::post('/fileupload', 'FilesController@uploadImage');

@@ -32,7 +32,7 @@
 				var result = data.data, genres = result.genres, comments = result.comments, html = '';
 				film_id = result.id;
 				html += '<a href="#">';
-				html += '<img class="avatar border-gray" src="'+base_url+'/public/uploads/'+result.photo+'" alt="...">';
+				html += '<img class="avatar border-gray" src="'+base_url+'/public/'+result.photo+'" alt="...">';
 				html += '<h4 class="title">'+result.name+'<br>';
 				html += '<small>Country: '+result.country+'</small><br>';
 				html += '<small>Ticket Price: '+result.ticket_price+'</small><br>';				

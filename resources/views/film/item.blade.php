@@ -12,13 +12,17 @@
 @section('content')
 	<div class="main-panel">		
         <div class="content">
-            <div class="container-fluid">
+            <div class="container-fluid">				
                 <div class="row">
+					<ol class="breadcrumb">
+				  <li><a href="<?php echo URL::to('/films/'); ?>">Films</a></li>
+				  <li class="active"><?php echo $film;?></li>
+				</ol>
                     <div class="col-md-10">
 						<div class="response-message"></div>
                        <div class="card">                            
                             <div class="content">
-                                <div id="film" data-film="<?php echo $film;?>">                                    
+                                <div id="film" data-film="<?php echo $film;?>">
 								</div>
                             <hr>
                             <div class="text-left" id="comment">                               
