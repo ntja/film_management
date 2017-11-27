@@ -83,7 +83,7 @@
 			})
 			// if everything is ok
 			.done(function(data, textStatus, jqXHR) {					
-				alertNotify("Well done ! Your account has been successfully created", 'success');
+				alertNotify("Well done ! Your comment has been saved", 'success');
 				window.location.reload();
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
